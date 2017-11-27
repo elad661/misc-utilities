@@ -35,4 +35,7 @@ except json.JSONDecodeError as e:
     print(f"{RED}json decode error.\n{e}{END}\n")
     jsonstr = raw
 
-print(highlight(jsonstr, lexers.JsonLexer(), formatters.TerminalFormatter()))
+if sys.stdin.isatty():
+    print(highlight(jsonstr, lexers.JsonLexer(), formatters.TerminalFormatter()))
+else:
+    print(jsonstr)
